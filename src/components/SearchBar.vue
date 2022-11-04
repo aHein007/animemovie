@@ -11,14 +11,18 @@
     
 </div>
 
-<div class="movie-list row ">
-    <div class="container-md m-3 col-6  col-lg-3  col-md-5 col-sm-5 " v-for="movie in movieData" :key="movie.id">
-        <div class="card " style="width:100%;height: 100%;" >
-            <img :src="movie.Poster" style="width:100%;height: 150px;object-fit: cover;" class=" card-img-top" alt="...">
-            <div class="card-body  rounded-bottom" style="width:100%;height:100%;">
-                <h5 class="card-title text-light">{{ movie.Title }}</h5>
-                <p class="card-text text-light">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Numquam, dolores </p>
-                <router-link :to="{name:'detail'}"  class="btn btn-success">Go somewhere</router-link>
+<div class="movie-list ">
+    <div class="container-md m-3  " v-for="movie in movieData" :key="movie.id">
+        <div class="card"  >
+            <img :src="movie.Poster"  class="card-img-top" alt="...">
+            <div class="type-container">
+               <div class="type">
+                {{ movie.Type }}
+               </div>
+            </div>
+            <div class="card-body  rounded-bottom" >
+                <div class="card-title text-light">{{ movie.Title }}</div>
+                <router-link :to="{name:'detail',params:{id:movie.imdbID}}"  class="btn btn-success link">Watch</router-link>
             </div>
         </div>
     </div>
@@ -58,19 +62,63 @@ input{
     width: 50%;
 }
 
-img{
+.card img{
     object-fit: cover;
+    height: 150px;
+  
 }
 
 .movie-list{
-    
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
+    max-width: 910px;
+    display: grid;
+   margin: auto;
+    grid-template-columns:repeat(auto-fit,minmax(180px,auto));
    
 }
 
+
+
+
+
 .card-body{
+height: 150px;
+    position: relative;
   background-color: rgb(43, 55, 71);
+}
+
+.link{
+    position: absolute;
+    bottom: 0px;
+    left: 0;
+    right: 0;
+    margin:10px;
+}
+
+.type-container{
+    position: relative;
+    max-width: 20px;
+   
+    
+}
+
+.type{
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    margin: 10px 0;
+    color: white;
+    background-color: #358B77;
+    padding: 5px;
+}
+
+*{
+    scroll-behavior: smooth;
+   
+}
+
+/* webbit scroll bar start*/
+
+::-webkit-scrollbar{
+    display: none;
 }
 </style>

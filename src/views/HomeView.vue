@@ -20,12 +20,15 @@
 import SearchBar from '../components/SearchBar'
 import ImageBody from '../components/ImageBody'
 
+
 export default {
   components: {
     
     SearchBar,
     ImageBody,  },
   name: 'HomeView',
+
+
   
 }
 </script>
